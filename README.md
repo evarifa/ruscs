@@ -8,17 +8,14 @@ A Python package for simulating rumor spreading on networks using the Maki-Thomp
 
 ## Overview
 
-`ruscs` provides tools for modeling and analyzing how rumors spread. The package implements the Maki-Thompson model with support for quasi-stationary dynamics, localized spreading, and choice-based propagation mechanisms on arbitrary network topologies.
+`ruscs` provides tools for simulating how rumors spread. The package implements the Maki-Thompson model with support for quasi-stationary method and control strategies for the simulation.
 
 ## Features
 
-- **Multiple spreading models**: Implements Maki-Thompson model using the Gillespie algorithm
-- **Quasi-stationary dynamics**: Support for QS approximations for efficient simulation
+- **Rumor spreading simulation**: Implements Maki-Thompson model using the Gillespie algorithm
+- **Quasi-stationary method**: Support for QS method for efficient simulation
 - **Network flexibility**: Works with arbitrary network topologies via NetworkX
-- **Localized spreading**: Model localized rumor propagation on networks
-- **Choice-based dynamics**: Simulate selective information sharing
-- **Easy configuration**: YAML-based configuration for experiments
-- **Logging and utilities**: Built-in logging and helper functions for analysis
+- **Control strategies**: Model control strategies like adding spreaders based on localization or choice
 
 ## Installation
 
@@ -81,9 +78,8 @@ result = mt_density(
 - **`Sim_MT_density_pulse_localized.py`**: Run MT density simulation with localized new spreaders
 - **`Sim_MT_lifetime_pulse_nearseed.py`**: Run MT lifetime simulation with near-seed pulse
 
-## Examples
+### Examples
 
-Check the `notebooks/` directory for Jupyter notebooks demonstrating:
 - MT density dynamics analysis (`MT_density_QS.ipynb`)
 - Activity pattern analysis (`analyze_activity.ipynb`)
 
