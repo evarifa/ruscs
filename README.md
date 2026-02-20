@@ -4,7 +4,7 @@
 
 **Rumor Spreading Complex Networks Simulations**
 
-A Python package for simulating rumor spreading on networks using the Maki-Thompson (MT) model.
+A Python package for simulating the Maki–Thompson rumor model on networks using the Gillespie algorithm.
 
 ![](docs/images/ruscs_init.png)
 
