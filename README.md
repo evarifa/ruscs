@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18713674.svg)](https://doi.org/10.5281/zenodo.18713674)
+
 # ruscs
 
 **Rumor Spreading Complex Networks Simulations**
