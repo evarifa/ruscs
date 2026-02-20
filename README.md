@@ -85,6 +85,11 @@ result = mt_density(
 - MT density dynamics analysis (`MT_density_QS.ipynb`)
 - Activity pattern analysis (`analyze_activity.ipynb`)
 
+## References
+**N. Gutjahr, P. Hövel, and A. Viol. (2021).** [*Controlling extended
+criticality via modular connectivity*](https://iopscience.iop.org/article/10.1088/2632-072X/ac202e), *Journal of Physics:
+Complexity 2, 035023*
+
 ## Citation
 
 If you use `ruscs` in your research, please cite:
