@@ -1,0 +1,24 @@
+[project]
+name = "ruscs"
+version = "0.0.1"
+authors = [
+  { name="Eva Rifà", email="eva.rifa@eurecat.com" },
+]
+description = "Rumor Spreading Complex Networks Simulations"
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+    "numpy",
+    "networkx",
+    "pyyaml",
+    "statsmodels",
+    "scikit-learn",
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+Homepage = "https://github.com/evarifa/ruscs"
+Issues = "https://github.com/evarifa/ruscs/issues"
