@@ -80,7 +80,7 @@ result = mt_density(
 - **`Sim_MT_density_pulse_localized.py`**: Run MT density simulation with localized new spreaders
 - **`Sim_MT_lifetime_pulse_nearseed.py`**: Run MT lifetime simulation with near-seed pulse
 
-### Examples
+### Tutorials
 
 - MT density dynamics analysis (`MT_density_QS.ipynb`)
 - Activity pattern analysis (`analyze_activity.ipynb`)
