@@ -183,12 +183,18 @@ def mt_density_dynamic_qs_pulse_loc(
         where array entries are replaced by scalar final values or None as indicated in the code.
     """
 
+    # Initial checks:
+
     if isinstance(rate, (int, float)):
         rate = [rate]*maxiter
     else:
         if len(rate) != maxiter:
                 raise ValueError("Rate vector must be of length maxiter.")
 
+    rate = np.asarray(rate)
+    if any(rate < 0):
+        raise ValueError("Parameter rate must be non-negative.")
+    
     if not condition_infection_first_spreading:
         if len(infected_vector) != maxiter:
             raise ValueError("New spreaders vector must be of length maxiter.")
@@ -200,11 +206,17 @@ def mt_density_dynamic_qs_pulse_loc(
         length_infected = sum(infected_vector)
     first_infection_step = True
 
-    # Initialize parameter initial infected
     if isinstance(initial_infected, (int, float)):
         initial_infected_is_vector = False
     else:
         initial_infected_is_vector = True
+
+    if alpha < 0:
+        raise ValueError("Parameter alpha must be non-negative.")
+    if delta < 0:
+        raise ValueError("Parameter delta must be non-negative.")
+    
+    # Parameter initialization
 
     np.random.seed(n)
     random.seed(n)

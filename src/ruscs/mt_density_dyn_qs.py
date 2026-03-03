@@ -72,12 +72,24 @@ def mt_density_dynamic_qs(
             n
     """
 
+    # Initial checks
+
     if isinstance(rate, (int, float)):
         rate = [rate]*maxiter
     else:
         if len(rate) != maxiter:
                 raise ValueError("Rate vector must be of length maxiter.")
 
+    rate = np.asarray(rate)
+    if any(rate < 0):
+        raise ValueError("Parameter rate must be non-negative.")
+
+    if alpha < 0:
+        raise ValueError("Parameter alpha must be non-negative.")
+    if delta < 0:
+        raise ValueError("Parameter delta must be non-negative.")
+    
+    # Parameter initialization
 
     np.random.seed(n)
     random.seed(n)

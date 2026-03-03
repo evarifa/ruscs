@@ -22,3 +22,10 @@ classifiers = [
 [project.urls]
 Homepage = "https://github.com/evarifa/ruscs"
 Issues = "https://github.com/evarifa/ruscs/issues"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --tb=short"

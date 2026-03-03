@@ -80,6 +80,7 @@ def mt_density_dynamic_qs_pulse_choice(
         maxiter: Maximum number of iterations to run the simulation
         neighbors: Neighbors of each node
         kmax: Maximum degree of the network
+        new_connections: List of new neighbor connections to add at the time density vector assigns new infections
         use_always_infected (optional): Flag parameter to keep new spreaders active always
         qs (optional): Use QS algorithm,
         M (optional): Size of QS memory
@@ -111,11 +112,17 @@ def mt_density_dynamic_qs_pulse_choice(
             r: number of realizations containing the last wanted type
             n
     """
+
+    # Initial checks:
     if isinstance(rate, (int, float)):
         rate = [rate]*maxiter
     else:
         if len(rate) != maxiter:
                 raise ValueError("Rate vector must be of length maxiter.")
+        
+    rate = np.asarray(rate)
+    if any(rate < 0):
+        raise ValueError("Parameter rate must be non-negative.")
 
     if not condition_infection_first_spreading:
         if len(infected_vector) != maxiter:
@@ -133,6 +140,13 @@ def mt_density_dynamic_qs_pulse_choice(
         initial_infected_is_vector = False
     else:
         initial_infected_is_vector = True
+
+    if alpha < 0:
+        raise ValueError("Parameter alpha must be non-negative.")
+    if delta < 0:
+        raise ValueError("Parameter delta must be non-negative.")
+    
+    # Parameter initialization
 
     np.random.seed(n)
     random.seed(n)

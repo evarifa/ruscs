@@ -6,7 +6,7 @@ def mt_density(rate,
                alpha,
                delta,
                maxiter,
-               neighborz,
+               neighbors,
                kmax,
                initial_infected=1,
                n=1,
@@ -20,7 +20,7 @@ def mt_density(rate,
         alpha: Recovery rate
         delta: Stifler to ignorant rate
         maxiter: Maximum number of iterations
-        neighborz: Neighbors of each node
+        neighbors: Neighbors of each node
         kmax: Maximum degree of the network
         initial_infected: Number of initially infected nodes (randomly selected). Default is 1.
         n: Seed for random number generator
@@ -28,10 +28,21 @@ def mt_density(rate,
         step_size: Step size for recording data
         show_prints: Show debug prints
     """
+
+    # Initial checks
+
+    if rate < 0:
+        raise ValueError("Parameter rate must be non-negative.")
+    if alpha < 0:
+        raise ValueError("Parameter alpha must be non-negative.")
+    if delta < 0:
+        raise ValueError("Parameter delta must be non-negative.")
+
+    # Parameter initialization
     np.random.seed(n)
     random.seed(n)
     rand_size = 10000000
-    network_size = len(neighborz)
+    network_size = len(neighbors)
     infected = list(np.random.choice(network_size, initial_infected, replace=False) + 1)
     density_y = np.zeros(maxiter + 1)
     active_y = np.zeros(network_size, dtype=int)
@@ -41,7 +52,7 @@ def mt_density(rate,
     ever_infected = set(infected)
     C = len(ever_infected) / network_size
     Ny = len(infected)
-    My = sum([len(neighborz[i-1]) for i in infected])
+    My = sum([len(neighbors[i-1]) for i in infected])
     Nz = 0 # Number of stiflers
     time = 0
     density_y[0] = Ny/network_size
@@ -87,7 +98,7 @@ def mt_density(rate,
                 active_z,
                 show_prints, # show_prints,
                 kmax,
-                neighborz,
+                neighbors,
                 active_y,
                 Ny,
                 rate,
